@@ -1,100 +1,62 @@
+# **Sentiment Analysis with NLTK and Scikit-learn**
 
-```markdown
-# Sentiment Analysis
+This project performs sentiment analysis on text data using Python, NLTK, and Scikit-learn. The goal is to build a machine learning model that can classify a piece of text as having a positive or negative sentiment.
 
-## Overview
+The entire process, from data cleaning to model training and evaluation, is contained in the Sentiment Analysis.ipynb Jupyter Notebook.
 
-This project implements a sentiment analysis tool that processes text data, specifically movie reviews and tweets, to determine their sentiment scores. The tool utilizes a lexicon-based approach, leveraging a predefined sentiment lexicon to compute sentiment scores for input text.
+## **Project Files**
 
-## Features
+* **Sentiment Analysis.ipynb**: The main Jupyter Notebook containing all the Python code. This includes:  
+  * Data loading and exploration.  
+  * Text preprocessing (cleaning, tokenization, stopword removal).  
+  * Feature extraction using TF-IDF.  
+  * Model training (using Logistic Regression).  
+  * Model evaluation.  
+* **train.csv**: The dataset used to train the sentiment analysis model.  
+* **test.csv**: A separate dataset used for testing the model's performance on unseen data.
 
-- **Data Loading**: Loads IMDB movie reviews and live Twitter data for analysis.
-- **Tokenization**: Tokenizes text by removing punctuation and stop words.
-- **Sentiment Scoring**: Calculates sentiment scores based on a sentiment lexicon.
-- **Data Visualization**: Analyzes sentiment across different tweets to summarize public opinion.
+## **Methodology**
 
-## Requirements
+1. **Data Loading**: The train.csv and test.csv files are loaded into Pandas DataFrames.  
+2. **Text Preprocessing**: The text data is cleaned to make it suitable for a machine learning model. This process involves:  
+   * Removing punctuation and special characters.  
+   * Converting text to lowercase.  
+   * Removing common "stopwords" (e.g., "the", "is", "a") using the **NLTK** library.  
+   * (Optional) Applying stemming or lemmatization to reduce words to their root form.  
+3. **Feature Extraction**: Machine learning models cannot understand raw text. We convert the cleaned text into numerical features using a **TF-IDF Vectorizer** (TfidfVectorizer from Scikit-learn).  
+4. **Model Training**: A **Logistic Regression** model is trained on the TF-IDF features and the corresponding sentiment labels from the train.csv file.  
+5. **Model Evaluation**: The trained model is evaluated using the test.csv data to see how accurately it can predict sentiment on new, unseen text.
 
-- Python 3.x
-- Libraries:
-  - `nltk`
-  - `json`
-  - `urllib`
-  - `tkinter`
+## **Libraries Used**
 
-You can install the necessary libraries using pip:
+This project relies on the following core Python libraries:
 
-```bash
-pip install nltk
-```
+* **Pandas**: For data manipulation and loading CSVs.  
+* **NLTK (Natural Language Toolkit)**: For text preprocessing tasks like stopword removal.  
+* **Scikit-learn (sklearn)**: For:  
+  * TfidfVectorizer (feature extraction)  
+  * train\_test\_split (splitting data)  
+  * LogisticRegression (the ML model)  
+  * accuracy\_score (evaluation)  
+* **Jupyter Notebook**: For interactive development and visualization.
 
-## Usage
+## **How to Run**
 
-1. Clone the repository:
+1. **Clone the repository:**  
+   git clone \[https://github.com/ajaykumar8/Sentiment-Analysis.git\](https://github.com/ajaykumar8/Sentiment-Analysis.git)  
+   cd Sentiment-Analysis
 
-   ```bash
-   git clone https://github.com/ajaykumar8/sentiment-analysis.git
-   cd sentiment-analysis
-   ```
+2. **Install the required libraries:**  
+   pip install pandas nltk scikit-learn jupyter
 
-2. Download the necessary NLTK data files:
-
-   ```python
-   import nltk
-   nltk.download('stopwords')
+3. Download NLTK data (if first time):  
+   Run Python in your terminal and execute the following commands:  
+   import nltk  
+   nltk.download('stopwords')  
    nltk.download('punkt')
-   ```
 
-3. Prepare the lexicon file (`lexicon.txt`) with sentiment scores. Ensure the format is correct as follows:
+4. **Launch Jupyter Notebook:**  
+   jupyter notebook
 
-   ```
-   word1   score1
-   word2   score2
-   ...
-   ```
-
-4. Prepare a JSON file containing tweets in the following format:
-
-   ```json
-   [
-     {"text": "Tweet text 1"},
-     {"text": "Tweet text 2"},
-     ...
-   ]
-   ```
-
-5. Run the script to perform sentiment analysis:
-
-   ```python
-   python sentiment_analysis.py
-   ```
-
-## Functions
-
-### `tokenize(doc)`
-- **Input**: A string of text (document).
-- **Output**: A list of tokens (words) after removing punctuation and stop words.
-
-### `sentiment_score(doc)`
-- **Input**: A string of text (document).
-- **Output**: A dictionary containing words and their corresponding sentiment scores from the lexicon.
-
-### `score_message(doc)`
-- **Input**: A string of text (message).
-- **Output**: The overall sentiment score for the message.
-
-## Contributing
-
-Contributions are welcome! If you have suggestions for improvements or bug fixes, please create a pull request or open an issue.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [NLTK Documentation](https://www.nltk.org/)
-- [Google Cloud Storage](https://cloud.google.com/storage)
-
-```
-
+5. Run the notebook:  
+   Open Sentiment Analysis.ipynb in your browser and run the cells sequentially.
